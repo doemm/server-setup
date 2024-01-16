@@ -1,0 +1,33 @@
+#cloud-config
+
+package-update: true
+package-upgrade: true
+
+users:
+  - name: ${username}
+    groups: sudo
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: true
+    ssh-authorized-keys:
+      - ${ssh_public_key}
+
+runcmd:
+  - sed -i -e '/^\#\?PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -i -e '$aAllowUsers ${username}' /etc/ssh/sshd_config
+  - systemctl restart ssh
+
+timezone: America/Los_Angeles
+
+packages:
+  - bat
+  - docker-compose-v2
+  - exa
+  - fd-find
+  - fzf
+  - git
+  - neovim
+  - ripgrep
+  - tmux
+  - vim
+  - zsh
