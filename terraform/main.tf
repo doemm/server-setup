@@ -2,7 +2,7 @@ terraform {
   required_providers {
     vultr = {
       source = "vultr/vultr"
-      version = ">= 2.19.0"
+      version = "2.19.0"
     }
   }
 }
@@ -19,7 +19,7 @@ resource "vultr_ssh_key" "pub_key" {
 }
 
 data "template_file" "cloud_init" {
-  template = file("./scripts/cloud-init.yaml")
+  template = file("../scripts/cloud-init.yaml")
 
   vars = {
     username = var.username

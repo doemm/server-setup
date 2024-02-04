@@ -18,16 +18,3 @@ runcmd:
   - systemctl restart ssh
 
 timezone: America/Los_Angeles
-
-packages:
-  - bat
-  - docker-compose-v2
-  - exa
-  - fd-find
-  - fzf
-  - git
-  - neovim
-  - ripgrep
-  - tmux
-  - vim
-  - zsh
